@@ -56,6 +56,7 @@ public class ReactNativeFingerprintScannerModule extends ReactContextBaseJavaMod
                                 ReactNativeFingerprintScannerModule.this);
                     }
                 });
+        mFingerprintIdentify.init();
         return mFingerprintIdentify;
     }
 
