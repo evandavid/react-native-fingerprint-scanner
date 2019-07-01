@@ -8,8 +8,8 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter;
 import com.wei.android.lib.fingerprintidentify.FingerprintIdentify;
-import com.wei.android.lib.fingerprintidentify.base.BaseFingerprint.FingerprintIdentifyExceptionListener;
-import com.wei.android.lib.fingerprintidentify.base.BaseFingerprint.FingerprintIdentifyListener;
+import com.wei.android.lib.fingerprintidentify.base.BaseFingerprint.ExceptionListener;
+import com.wei.android.lib.fingerprintidentify.base.BaseFingerprint.IdentifyListener;
 
 @ReactModule(name="ReactNativeFingerprintScanner")
 public class ReactNativeFingerprintScannerModule extends ReactContextBaseJavaModule
@@ -48,7 +48,7 @@ public class ReactNativeFingerprintScannerModule extends ReactContextBaseJavaMod
         }
         mReactContext.addLifecycleEventListener(this);
         mFingerprintIdentify = new FingerprintIdentify(getCurrentActivity(),
-                new FingerprintIdentifyExceptionListener() {
+                new ExceptionListener() {
                     @Override
                     public void onCatchException(Throwable exception) {
                         mReactContext.removeLifecycleEventListener(
@@ -79,7 +79,7 @@ public class ReactNativeFingerprintScannerModule extends ReactContextBaseJavaMod
         }
 
         getFingerprintIdentify().resumeIdentify();
-        getFingerprintIdentify().startIdentify(MAX_AVAILABLE_TIMES, new FingerprintIdentifyListener() {
+        getFingerprintIdentify().startIdentify(MAX_AVAILABLE_TIMES, new IdentifyListener() {
             @Override
             public void onSucceed() {
                 promise.resolve(true);
