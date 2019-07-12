@@ -9,7 +9,6 @@ Pod::Spec.new do |s|
   s.license      = package['license']
 
   s.authors      = package['author']
-  s.homepage     = package['homepage']
   s.platform     = :ios, "10.0"
 
   s.source       = { :git => "https://github.com/evandavid/react-native-fingerprint-scanner.git", :tag => "v#{s.version}" }
